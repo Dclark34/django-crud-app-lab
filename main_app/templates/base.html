@@ -8,17 +8,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
+    <link rel="shortcut icon" type="image/png" href="" />
+    <img src="{% static '' %}" alt="nat park logo" />
     <title>Nat Park Tracker</title>
     {% block head %} 
     {% endblock %}
 </head>
     <body>
         <header>
-        <div>
-            <h6>PLACEHOLDER FIND PICTURE OF NATIONAL PARK</h6>
-        </div>
+            <div class="header-logo-container">
+            <a href="/">
+            <img src="" alt="Nat Park Logo" />
+        </a>
+      </div>
         <nav>
             <ul>
+                <li><a href="/parks">Your Parks</a></li>
             <li><a href="/about">About</a></li>
             </ul>
         </nav>
