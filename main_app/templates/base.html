@@ -8,8 +8,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    <link rel="shortcut icon" type="image/png" href="" />
-    <img src="{% static '' %}" alt="nat park logo" />
+    <!-- <link rel="shortcut icon" type="image/png" href="" /> ADD A SHORTCUT ICON HERE. USE AI -->
+    <!-- <img src="{% static '' %}" alt="nat park logo" /> ADD A HEADER LOGO HERE-->
     <title>Nat Park Tracker</title>
     {% block head %} 
     {% endblock %}
@@ -18,13 +18,14 @@
         <header>
             <div class="header-logo-container">
             <a href="/">
-            <img src="" alt="Nat Park Logo" />
+            <!-- <img src="" alt="Nat Park Logo" /> ADD A NAT PARK LOGO -->
         </a>
       </div>
         <nav>
             <ul>
                 <li><a href="/parks">Your Parks</a></li>
-            <li><a href="/about">About</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href='/'>Home</a></li>
             </ul>
         </nav>
         </header>
