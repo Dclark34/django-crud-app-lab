@@ -12,6 +12,7 @@
 <section class="card-container">
   {% for park in parks %}
   <div class="card">
+    <a href="{% url 'park-detail' park.id %}">
     <div class="card-content">
       <div class="card-img-container">
         <!-- <img src="" alt=""/> -->
@@ -21,6 +22,7 @@
       <p>{{ park.rating }}</p>
       <p><small>{{ park.description }}</small></p>
     </div>
+    </a>
   </div>
   {% endfor %}
 </section>

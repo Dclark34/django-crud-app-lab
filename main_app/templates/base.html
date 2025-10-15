@@ -23,9 +23,10 @@
       </div>
         <nav>
             <ul>
-                <li><a href="/parks">Your Parks</a></li>
-                <li><a href="/about">About</a></li>
                 <li><a href='/'>Home</a></li>
+                <li><a href="{% url 'park-index' %}">Your Parks</a></li>
+                <li><a href="{% url 'park-create' %}">Add Park</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
             </ul>
         </nav>
         </header>
