@@ -19,4 +19,36 @@
     </div>
   </div>
 </section>
+
+<div class="log-badges-container">
+  <section class="travel-log">
+    <div class="subsection-title">
+      </div>
+      <h2>Traveler's Log</h2>
+      <h3>Add a Log for {{park.name}}</h3>
+        <form action="{%url 'add-log' park.id%}" method="post" class="subsection-content" autocomplete="off">
+          {% csrf_token %} 
+          {{ log_form.as_p }}
+          <button type="submit" class="btn submit">Add Log</button>
+        </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Activity</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for log in park.log_set.all %}
+          <tr>
+            <td>{{log.date}}</td>
+            <td>{{log.get_activity_display}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
+
+
 {% endblock %}

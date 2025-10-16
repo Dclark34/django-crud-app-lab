@@ -9,4 +9,5 @@ urlpatterns = [
     path('parks/create/', views.ParkCreate.as_view(), name='park-create'),
     path('parks/<int:pk>/update/', views.ParkUpdate.as_view(), name='park-update'),
     path('parks/<int:pk>/delete/', views.ParkDelete.as_view(), name='park-delete'),
+    path('parks/<int:park_id>/add-log/', views.add_log, name='add-log'),
 ]

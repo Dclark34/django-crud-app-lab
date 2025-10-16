@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Park
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .forms import LogForm
 
 
 #park class
@@ -37,7 +38,8 @@ def park_index(request):
 #park details 
 def park_detail(request, park_id):
     park = Park.objects.get(id=park_id)
-    return render(request, 'parks/detail.html', {'park': park})
+    log_form = LogForm()
+    return render(request, 'parks/detail.html', {'park': park, 'log_form' : log_form})
 
 #create cbv
 
@@ -55,3 +57,14 @@ class ParkUpdate(UpdateView):
 class ParkDelete(DeleteView):
     model = Park
     success_url = '/parks/'
+
+#add log
+def add_log(request, park_id):
+    form = LogForm(request.POST)
+    if form.is_valid():
+        new_log = form.save(commit=False)
+        new_log.park_id = park_id
+        new_log.save()
+    return redirect('park-detail', park_id=park_id)
+
+
