@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Park
+from .models import Park, Log
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import LogForm
 from django.contrib.auth.views import LoginView
@@ -8,6 +8,7 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 
 #homepage
@@ -60,6 +61,23 @@ def add_log(request, park_id):
         new_log.park_id = park_id
         new_log.save()
     return redirect('park-detail', park_id=park_id)
+
+#update log
+
+class LogUpdate(LoginRequiredMixin, UpdateView):
+    model = Log
+    form_class = LogForm
+    template_name = 'main_app/park_form.html'
+    # success_url = '/parks/detail/'
+    def get_success_url(self):
+        return reverse_lazy('park-detail', kwargs= {'park_id': self.object.park.pk})
+    
+#delete log
+
+class LogDelete(LoginRequiredMixin, DeleteView):
+    model = Log
+    def get_success_url(self):
+        return reverse_lazy('park-detail', kwargs= {'park_id': self.object.park.pk})
 
 
 #sign up function

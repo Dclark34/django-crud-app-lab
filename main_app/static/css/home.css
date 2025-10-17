@@ -15,14 +15,14 @@ main > section {
   flex-direction: column;
 }
 
-.header-logo-container {
+/* .header-logo-container {
   display: none;
-}
+} */
 
-.logo-container {
+/* .logo-container {
   max-width: 375px;
   object-fit: cover;
-}
+} */
 
 .mtn-container {
   /* width: 80vw; */

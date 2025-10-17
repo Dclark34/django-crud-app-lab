@@ -30,7 +30,6 @@ body {
     'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
   min-height: 100vh;
-  
   --nav-bg: rgb(255, 255, 255);     
   --nav-bg-ff: rgba(255, 255, 255, 0.9);    
   --borders: rgb(222, 212, 200) solid 2px;  
@@ -43,7 +42,6 @@ body {
   --danger: rgb(165, 42, 42);          
   --secondary: rgb(88, 70, 56);             
   --card-box-shadow: 5px 5px 6px -1px #5e5e5e; 
-  
   --font-xtreme: 4.2rem;
   --font-xxl: 3.6rem;
   --font-xl: 2.4rem;
@@ -97,12 +95,6 @@ nav ul {
 
 nav li {
   padding: 5px 8px;
-}
-
-.header-logo-container {
-  margin: auto;
-  padding: 10px 20px 0;
-  max-width: 500px;
 }
 
 .page-header {

@@ -44,6 +44,12 @@
           <tr>
             <td>{{log.date}}</td>
             <td>{{log.get_activity_display}}</td>
+            <td>
+              {% if log.author == user %}
+              <a href="{% url 'log-update' pk=log.pk %}" class="btn submit" id="tbl-edit">Edit</a>
+              <a href="{% url 'log-delete' pk=log.pk %}" class="btn danger" id="tbl-delete">X</a>
+              {% endif %}
+            </td>
           </tr>
         {% endfor %}
       </tbody>

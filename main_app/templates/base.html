@@ -9,18 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     <!-- <link rel="shortcut icon" type="image/png" href="" /> ADD A SHORTCUT ICON HERE. USE AI -->
-    <!-- <img src="{% static '' %}" alt="nat park logo" /> ADD A HEADER LOGO HERE-->
+    <!-- <img src="{% static 'nat_park_logo.png' %}" alt="nat park logo" />  -->
+     <!-- <link rel="shortcut icon" type="image/png" href="static/images" /> -->
     <title>Nat Park Tracker</title>
     {% block head %} 
     {% endblock %}
 </head>
     <body>
         <header>
-            <div class="header-logo-container">
-            <a href="/">
-            <!-- <img src="" alt="Nat Park Logo" /> ADD A NAT PARK LOGO -->
-        </a>
-      </div>
         <nav>
             <ul>
                 {% if user.is_authenticated %}
@@ -49,5 +45,3 @@
 
 
 
-<!--!RESUME HERE. ADD MORE CSS. FOR THIS LAB, COPY STARTING POINT WITH CAT CSS. ADJUST FROM THERE. HAVE DIFFERNT
-IMAGES AND NAVBAR. SEE IF YOU CAN FIND ANY LOGOS.-->

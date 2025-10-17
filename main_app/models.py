@@ -23,6 +23,7 @@ class Park(models.Model):
         def get_absolute_url(self):
                 return reverse('park-detail', kwargs={'park_id': self.id})
 
+
 class Log(models.Model):
         date = models.DateField('Travelers Log')
         activity = models.CharField(
@@ -32,9 +33,11 @@ class Log(models.Model):
                 )
         
         park = models.ForeignKey(Park, on_delete=models.CASCADE)
+        author = models.ForeignKey(User, on_delete=models.CASCADE)
 
         def __str__(self):
                 return f"I went {self.get_activity_display()} on {self.date}"
         
         class Meta:
                 ordering = ['-date']
+        

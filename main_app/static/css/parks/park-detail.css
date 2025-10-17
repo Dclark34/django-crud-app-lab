@@ -133,13 +133,20 @@ h1 {
 .travel-log th {
   font-size: var(--font-l);
   padding: 5px 5px 0;
-  border-bottom: rgb(36, 116, 248) solid 2px;
+  border-bottom: rgb(255, 255, 255) solid 2px;
 }
 
 .travel-log tr:nth-child(even) {
   background-color: #39634d;
 }
 
+#tbl-edit {
+  font-size: 12px;
+} 
+
+#tbl-delete {
+  font-size: 12px;
+} 
 
 @media only screen and (min-width: 768px) {
   .park-container {
