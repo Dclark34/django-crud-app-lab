@@ -3,62 +3,56 @@ from django.http import HttpResponse
 from .models import Park
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import LogForm
+from django.contrib.auth.views import LoginView
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-
-#park class
-
-# class Park:
-#     def __init__(self, name, state, description, rating):
-#         self.name = name
-#         self.state = state
-#         self.description = description
-#         self.rating = rating
-
-
-# parks = [
-#     Park('Glacier National Park', 'Montana', 'Beautiful scenery and plenty of wildlife!', 10),
-#     Park('Arches National Park', 'Utah', 'Awesome Geography, but too many lines', 6),
-#     Park('Arcadia National Park', 'Maine', 'Great hiking. Beautiful in Fall', 8),
-#     Park('Crater Lake National Park', 'Oregon', 'The crater is super cool!', 9),
-# ]
 
 #homepage
-def home(request):
-    return render(request, 'home.html')
+class Home(LoginView):
+    template_name = 'home.html'
 
 #about route
 def about(request):
     return render(request, 'about.html')
 
 #parks index
+@login_required
 def park_index(request):
-    parks = Park.objects.all()
+    parks = Park.objects.filter(user=request.user)
     return render(request, 'parks/index.html', {'parks': parks})
 
 #park details 
+@login_required
 def park_detail(request, park_id):
     park = Park.objects.get(id=park_id)
     log_form = LogForm()
     return render(request, 'parks/detail.html', {'park': park, 'log_form' : log_form})
 
 #create cbv
-
-class ParkCreate(CreateView):
+class ParkCreate(LoginRequiredMixin, CreateView):
     model = Park
-    fields = '__all__'
+    fields = ['name', 'state', 'description', 'rating']
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
+
 
 #update
-class ParkUpdate(UpdateView):
+class ParkUpdate(LoginRequiredMixin, UpdateView):
     model = Park
     fields = ['description', 'rating']
 
 
 #delete
-class ParkDelete(DeleteView):
+class ParkDelete(LoginRequiredMixin, DeleteView):
     model = Park
     success_url = '/parks/'
 
 #add log
+@login_required
 def add_log(request, park_id):
     form = LogForm(request.POST)
     if form.is_valid():
@@ -66,5 +60,22 @@ def add_log(request, park_id):
         new_log.park_id = park_id
         new_log.save()
     return redirect('park-detail', park_id=park_id)
+
+
+#sign up function
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('park-index')
+        else:
+            error_message = 'Invalid sign up - try again'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'signup.html', context)
+
 
 
