@@ -20,8 +20,8 @@ html {
 }
 
 body {
-  background-color: #424242;
-  color: #ffffff;
+  background-color: #2e3b2c; 
+  color: #f4f1ee; 
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -30,18 +30,20 @@ body {
     'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
   min-height: 100vh;
-  --nav-bg: rgba(104, 197, 248, 0.7);
-  --nav-bg-ff: rgba(104, 197, 248, 0.9);
-  --borders: rgb(255, 255, 255) solid 2px;
-  --text-color: rgb(17, 20, 17);
-  --link-hover-color: rgb(16, 56, 158);
-  --button-bg: rgb(245, 245, 245);
-  --button-bg-hover: rgb(226, 226, 226);
-  --submit: rgb(26, 128, 0);
-  --warn: rgb(255, 102, 0);
-  --danger: rgb(220, 20, 30);
-  --secondary: rgb(57, 57, 57);
-  --card-box-shadow: 5px 5px 6px -1px #aaa;
+  
+  --nav-bg: rgb(255, 255, 255);     
+  --nav-bg-ff: rgba(255, 255, 255, 0.9);    
+  --borders: rgb(222, 212, 200) solid 2px;  
+  --text-color: rgb(33, 42, 24);          
+  --link-hover-color: rgb(26, 91, 122);   
+  --button-bg: rgb(223, 211, 184);         
+  --button-bg-hover: rgb(206, 194, 167);   
+  --submit: rgb(34, 139, 34);              
+  --warn: rgb(60, 47, 35);            
+  --danger: rgb(165, 42, 42);          
+  --secondary: rgb(88, 70, 56);             
+  --card-box-shadow: 5px 5px 6px -1px #5e5e5e; 
+  
   --font-xtreme: 4.2rem;
   --font-xxl: 3.6rem;
   --font-xl: 2.4rem;
@@ -52,7 +54,7 @@ body {
 
 header {
   width: 100%;
-  background: var(--nav-bg-ff); /* rgba(104, 197, 248, .9) */
+  background: var(--nav-bg-ff); 
   border-bottom: var(--borders);
 }
 
@@ -285,7 +287,7 @@ nav li {
 
     nav,
     .header-logo-container {
-      background: rgba(104, 197, 248, 0.6);
+      background: rgb(255, 255, 255);
       -webkit-backdrop-filter: blur(3px);
       backdrop-filter: blur(3px);
     }
